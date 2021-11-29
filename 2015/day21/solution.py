@@ -86,11 +86,6 @@ def is_boss_defeated(player_stats):
 		if player_hp <= 0:
 			return False
 
-	# player_attacks = boss_hp // damage_to_boss
-	# boss_attacks = player_hp // damage_to_player 
-
-	# return player_attacks < boss_attacks
-
 
 def find_best_loadout():
 	gold_per_winning_loadout = []
