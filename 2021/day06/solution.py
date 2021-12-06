@@ -5,7 +5,6 @@ def simulate_fish(timer_count, day_from=1, day_to=80):
 		zero_count = timer_count[0]
 		for timer in range(1, len(timer_count)):
 			timer_count[timer - 1] = timer_count[timer] 
-			timer_count[timer] = 0
 
 		timer_count[6] += zero_count
 		timer_count[8] = zero_count
