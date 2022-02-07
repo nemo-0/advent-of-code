@@ -38,14 +38,20 @@ def fold(dots_map, fold_instructions, n=1):
 	for instruction in fold_instructions:
 		direction, value = instruction
 		if direction == "y":
-			up, down = dots_map[:value-1], dots_map[value:]
+			up, down = dots_map[:value], dots_map[value+1:]
+			if len(up) > len(down):
+				difference = len(up) - len(down)
+				start = up[:difference]
+				up = up[difference:]
+			else:
+				start = []
 			for i in range(len(up)):
 				for j in range(len(up[i])):
 					up[i][j] = DOT if up[i][j] == DOT or down[-i-1][j] == DOT else UNMARKED
-			dots_map = up
+			dots_map = start + up
 		elif direction == "x":
 			left = [line[:value] for line in dots_map]
-			right = [line[value:] for line in dots_map]
+			right = [line[value+1:] for line in dots_map]
 			for i in range(len(left)):
 				for j in range(len(left[i])):
 					left[i][j] = DOT if left[i][j] == DOT or right[i][-j-1] == DOT else UNMARKED
